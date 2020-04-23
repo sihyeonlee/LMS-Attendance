@@ -1,3 +1,5 @@
+print("Prepare to Load Excel Library...")
+
 import requests
 from bs4 import BeautifulSoup
 import openpyxl
@@ -17,7 +19,7 @@ ws['D3'] = "출석률"
 
 excel_index = 4
 
-print("Username : ")
+print("Username: ")
 username = str(input())
 password = str(getpass())
 
@@ -136,15 +138,16 @@ for index, i in enumerate(course_id_list):
                     del raw_data[0:3]
                     title_index += 1
                     excel_index += 1
+    excel_index += 1
 
 while True:
     try:
         wb.save("스마트캠퍼스 출석표.xlsx")
         print("엑셀 파일 저장 완료")
+        input()
         break
 
     except:
         print("엑셀 파일이 열려 있는 경우 저장이 불가능합니다.")
         print("엑셀 파일을 종료 후 아무 키나 눌러주세요.")
         input()
-        exit()
